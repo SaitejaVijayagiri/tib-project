@@ -2,6 +2,7 @@ services:
   - type: web
     name: tib-backend
     env: node
+    rootDir: backend
     plan: free
     buildCommand: npm install
     startCommand: npm start
@@ -30,6 +31,7 @@ services:
   - type: web
     name: tib-frontend
     env: static
+    rootDir: frontend
     buildCommand: npm run build
     staticPublishPath: ./dist
     envVars:
