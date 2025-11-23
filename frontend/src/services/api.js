@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+let apiHost = import.meta.env.VITE_API_HOST;
+if (apiHost && !apiHost.includes('.')) {
+    apiHost += '.onrender.com';
+}
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_HOST ? `https://${import.meta.env.VITE_API_HOST}` : 'http://localhost:5000'),
+    baseURL: import.meta.env.VITE_API_URL || (apiHost ? `https://${apiHost}` : 'http://localhost:5000'),
     headers: {
         'Content-Type': 'application/json',
     },
