@@ -2,6 +2,9 @@
 
 A simplified Trello clone built with React + Vite and Node.js + Express + PostgreSQL.
 
+## 🚀 Live Demo
+[https://tib-frontend.onrender.com](https://tib-frontend.onrender.com)
+
 ## Features
 - User Signup/Login
 - Create Boards
