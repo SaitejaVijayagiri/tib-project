@@ -27,12 +27,11 @@ services:
           name: tib-db
           property: host
 
-  - type: web
+  - type: static
     name: tib-frontend
-    env: static
     plan: free
     buildCommand: npm run build
-    staticPublishPath: ./dist
+    publishPath: ./dist
     envVars:
       - key: VITE_API_HOST
         fromService:
