@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: tib-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_NAME
+        fromDatabase:
+          name: tib-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: tib-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: tib-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: tib-db
+          property: host
+
+  - type: web
+    name: tib-frontend
+    env: static
+    plan: free
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: tib-backend
+          property: url
+
+databases:
+  - name: tib-db
+    plan: free
+    databaseName: tib_db
+    user: tib_user
