@@ -3,28 +3,9 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const { login } = useAuth();
-    const navigate = useNavigate();
-    const [error, setError] = useState('');
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await login(email, password);
-            navigate('/');
-        } catch (err) {
-            setError('Failed to login. Please check your credentials.');
-        }
-    };
-
-    return (
-        <div className="auth-wrapper">
-            <div className="auth-container">
                 <h2>Welcome Back</h2>
                 <p className="auth-subtitle">Enter your credentials to access your board</p>
-                {error && <div className="error">{error}</div>}
+    { error && <div className="error">{error}</div> }
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <input
@@ -49,8 +30,8 @@ const Login = () => {
                 <p>
                     Don't have an account? <Link to="/signup">Sign up</Link>
                 </p>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
