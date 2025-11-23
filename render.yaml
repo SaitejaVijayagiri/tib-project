@@ -40,6 +40,10 @@ services:
           type: web
           name: tib-backend
           property: host
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
 
 databases:
   - name: tib-db
